@@ -1,6 +1,6 @@
 import { ContactForm } from './form/form';
 import { Filter } from './filter';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { ContactList } from './list/list';
 import { Wrapper } from './wrapper-styled';
 import { useDispatch, useSelector } from 'react-redux';
