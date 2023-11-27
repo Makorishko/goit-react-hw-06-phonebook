@@ -4,7 +4,6 @@ import { filtersReducer } from '../redux/filterSlice';
 
 import {
     persistStore,
-    persistReducer,
     FLUSH,
     REHYDRATE,
     PAUSE,
