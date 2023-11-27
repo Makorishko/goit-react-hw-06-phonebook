@@ -2,7 +2,6 @@ import { nanoid } from 'nanoid';
 import { Form } from './form-styled';
 import { FormContainer } from './form-styled';
 
-
 export const ContactForm = ({ addContact }) => {
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -14,14 +13,11 @@ export const ContactForm = ({ addContact }) => {
     form.reset();
   };
 
-
- 
-
   return (
     <FormContainer>
       {' '}
       <Form onSubmit={handleSubmit}>
-        <label htmlFor="name"></label>
+        <label htmlFor="name">Name</label>
         <input type="text" name="name" id="name" required />
         <label htmlFor="number">Number</label>
         <input type="tel" name="number" id="number" required />

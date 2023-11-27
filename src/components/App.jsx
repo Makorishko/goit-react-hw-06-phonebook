@@ -1,18 +1,15 @@
 import { ContactForm } from './form/form';
 import { Filter } from './filter';
-import { useEffect } from 'react';
 import { ContactList } from './list/list';
 import { Wrapper } from './wrapper-styled';
 import { useDispatch, useSelector } from 'react-redux';
+import { addContactItems, deleteContactItems } from '../redux/contactsSlice';
+import { changeFilterParam } from 'redux/filterSlice';
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts);
-  const filters = useSelector(state => state.filters);
+  const contacts = useSelector(state => state.contacts.items);
+  const filters = useSelector(state => state.filters.param);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   const addContact = newContact => {
     const isSame = contacts.find(
@@ -22,26 +19,22 @@ export const App = () => {
     if (isSame) {
       return alert('This name already exist');
     }
-
-    dispatch({
-      type: 'contact/adding',
-      payload: newContact,
-    });
+    dispatch(addContactItems(newContact));
   };
 
   const changeFilter = evt => {
-    dispatch({
-      type: 'filter/change',
-      payload: evt.target.value,
-    });
+    dispatch(changeFilterParam(evt.target.value));
   };
 
   const deleteElementsOfList = contact => {
-    dispatch({
-      type: 'contact/delete',
-      payload: contact.id,
-    });
+    dispatch(deleteContactItems(contact.id));
   };
+
+  //   dispatch({
+  //     type: 'deleteContactItems',
+  //     payload: contact.id,
+  //   });
+  //
 
   const getFilteredList = () => {
     if (contacts.length) {
