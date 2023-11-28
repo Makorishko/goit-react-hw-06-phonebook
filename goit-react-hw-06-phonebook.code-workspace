@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "goit-react-hw-06-phonebook",
+			"path": "."
+		},
+		{
+			"name": "src",
+			"path": "../goit-react-hw-04-phonebook/src"
+		}
+	],
+	"settings": {}
+}
